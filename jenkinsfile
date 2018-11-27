@@ -1,4 +1,4 @@
-node('Android'){
+pipeline('Android'){
     agent any
 
      
