@@ -1,8 +1,8 @@
-pipeline{
+node{
     agent any
 
       
-
+    checkout smc
 
     stages{
          stage('Clean'){
@@ -24,6 +24,12 @@ pipeline{
                     steps{
                         echo('Testing...')
                         sh './gradlew testDebugUnitTest'
+                    }
+                }
+                
+                stage('Save'){
+                    steps{
+                        archiveArtifacts 'app/build/outputs/apk/*'
                     }
                 }
          }
