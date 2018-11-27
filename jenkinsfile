@@ -16,7 +16,7 @@ pipeline{
                 steps{
                     echo('Building...')
                     sh './gradlew assembleDebug'
-                      archiveArtifacts '**/build/outputs/apk/*'
+                      
                 }
             }
 
@@ -24,10 +24,17 @@ pipeline{
                     steps{
                         echo('Testing...')
                         sh './gradlew testDebugUnitTest'
-                        junit '**/test-results/**/*.xml'
+                       
                     }
                 }
                 
               
          }
+         
+         post {
+        always {
+            archiveArtifacts artifacts: '**/build/outputs/apk/*'
+            junit '**/build/reports/**/*.xml'
+        }
+    }
 }
