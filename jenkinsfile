@@ -1,16 +1,14 @@
 pipeline{
     agent any
 
-       tools {
-        gradle "GRADLE_LATEST"
-    }
+      
 
 
     stages{
          stage('Clean'){
                 steps{
                     echo('Cleaning...')
-                  sh  'clean'
+                  sh  './gradlew clean'
 
                 }
             }
@@ -18,14 +16,14 @@ pipeline{
           stage('Build'){
                 steps{
                     echo('Building...')
-                    sh 'assembleDebug'
+                    sh './gradlew assembleDebug'
                 }
             }
 
              stage('Test'){
                     steps{
                         echo('Testing...')
-                        sh 'testDebugUnitTest'
+                        sh './gradlew testDebugUnitTest'
                     }
                 }
          }
