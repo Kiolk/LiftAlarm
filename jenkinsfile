@@ -3,7 +3,7 @@ pipeline{
 
     stages{
          stage('Clean'){
-                step{
+                steps{
                     echo('Cleaning...')
                    sh 'clean'
 
@@ -11,14 +11,14 @@ pipeline{
             }
 
           stage('Build'){
-                step{
+                steps{
                     echo('Building...')
                     sh 'assembleDebug'
                 }
             }
 
              stage('Test'){
-                    step{
+                    steps{
                         echo('Testing...')
                         sh 'testDebugUnitTest'
                     }
