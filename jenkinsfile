@@ -1,8 +1,7 @@
 node('Android'){
     agent any
 
-      
-    checkout smc
+     
 
     stages{
          stage('Clean'){
