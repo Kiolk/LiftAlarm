@@ -1,11 +1,16 @@
 pipeline{
     agent any
 
+       tools {
+        gradle "GRADLE_LATEST"
+    }
+
+
     stages{
          stage('Clean'){
                 steps{
                     echo('Cleaning...')
-                   clean
+                  sh  'clean'
 
                 }
             }
