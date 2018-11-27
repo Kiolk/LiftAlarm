@@ -5,7 +5,7 @@ pipeline{
          stage('Clean'){
                 steps{
                     echo('Cleaning...')
-                   sh 'clean'
+                   clean
 
                 }
             }
