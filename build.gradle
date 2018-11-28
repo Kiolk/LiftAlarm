@@ -50,7 +50,6 @@ task cleanDefault{
 }
 
 task slackMessage{
-    dependsOn 'assembleDebug'
 
     doLast{
         def text = "Build builded"
