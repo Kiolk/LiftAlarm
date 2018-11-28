@@ -27,7 +27,16 @@ task clean(type: Delete) {
 }
 
 task hello{
+    group 'Welcom tasks'
+    description 'Simple Hello World! task'
+
     doLast{
         println('Hello World!')
+    }
+}
+
+task cleanCompleted(dependsOn: clean){
+    doLast{
+        println('Clean completed')
     }
 }
