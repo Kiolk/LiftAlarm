@@ -54,7 +54,7 @@ task slackMessage{
     doLast{
         def text = "Build builded"
 
-        def webHook = "xoxp-466669688487-465519589107-490160131382-9159a88d0ab5d93e646e10adfeeb2dc4"
+        def webHook = "https://hooks.slack.com/services/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"
 
         def channel = "#work"
 
