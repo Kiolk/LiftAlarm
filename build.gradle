@@ -23,7 +23,9 @@ allprojects {
 }
 
 task clean(type: Delete) {
+    println('clean start')
     delete rootProject.buildDir
+    println('clean end')
 }
 
 task hello{
@@ -36,7 +38,17 @@ task hello{
 }
 
 task cleanCompleted(dependsOn: clean){
+    cleanCompleted.finalizedBy(clean)
     doLast{
         println('Clean completed')
     }
 }
+
+task cleanDefault{
+    clean
+    cleanCompleted.finalizedBy(clean)
+}
+
+//task slackMessage(dependsOn: assembleDebug){
+//
+//}
