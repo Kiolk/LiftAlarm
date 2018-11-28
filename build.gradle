@@ -38,7 +38,7 @@ task hello{
     }
 }
 
-task cleanCompleted(dependsOn: clean){
+task cleanCompleted(dependsOn: hello){
     doLast{
         println('Clean completed')
     }
