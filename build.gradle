@@ -26,6 +26,7 @@ task clean(type: Delete) {
     println('clean start')
     delete rootProject.buildDir
     println('clean end')
+    dependsOn 'cleanCompleted'
 }
 
 task hello{
@@ -38,7 +39,6 @@ task hello{
 }
 
 task cleanCompleted(dependsOn: clean){
-    cleanCompleted.finalizedBy(clean)
     doLast{
         println('Clean completed')
     }

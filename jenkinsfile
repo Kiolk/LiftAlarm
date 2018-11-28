@@ -6,7 +6,6 @@ pipeline{
             steps{
                 echo('Cleaning...')
                   sh  './gradlew clean'
-                  sh './gradlew cleanDefault'
                 }
             }
          stage('Build'){
