@@ -62,7 +62,7 @@ task slackMessage{
                         '-X',
                         'POST',
                         '--data-urlencode',
-                        "payload={\"channel\": '${channel}', \"username\": \"Bot\", \"text\": '${text}', \"icon_emoji\": \":ghost:\"}, '${webHook}'"].execute().text
+                        "payload={\"channel\": \"${channel}\", \"username\": \"Bot\", \"text\": \"${text}\", \"icon_emoji\": \":ghost:\"}", "${webHook}"].execute().text
 
         println response
     }
