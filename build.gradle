@@ -55,7 +55,7 @@ task cleanDefault{
 task slackMessage{
 
     doLast{
-        def text = "Build builded"
+        def text = "Build was built successful"
 
         def webHook = "https://hooks.slack.com/services/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"
 
