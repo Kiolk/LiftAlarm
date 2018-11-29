@@ -7,6 +7,16 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+
+    def getGitHash = { ->
+        def stdout = new ByteArrayOutputStream()
+        exec{
+            commandLine 'git', 'rev-parse', '--short', 'HEAD'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    }
+
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.github.kiolk.liftalarm"
@@ -15,6 +25,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', 'GitHash', "\"${getGitHash()}\""
         ext.betaDistributionReleaseNotes="Test Release note"
         ext.betaDistributionEmails="tyteishi@gmail.com"
         ext.betaDistributionGroupAliases="my-best-testers"
