@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'io.fabric'
+
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
@@ -13,6 +15,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ext.betaDistributionReleaseNotes="Test Release note"
+        ext.betaDistributionEmails="tyteishi@gmail.com"
+        ext.betaDistributionGroupAliases="my-best-testers"
     }
 
     signingConfigs {
@@ -45,4 +50,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.6@aar') {
+        transitive = true;
+    }
 }
