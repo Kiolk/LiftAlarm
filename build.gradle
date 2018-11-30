@@ -26,6 +26,15 @@ def getGitHash = { ->
     return stdout.toString().trim()
 }
 
+def getAuthorCommit = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec{
+        commandLine 'git', '--no-pager', 'show', '-s', '--format=\'%an\''
+        standardOutput = stdout
+    }
+    return stdout.toString()
+}
+
 allprojects {
     repositories {
         google()
@@ -64,7 +73,7 @@ task cleanDefault{
 task slackMessage{
 
     doLast{
-        def text = "Build ${getGitHash()} was built successful"
+        def text = "Build ${getGitHash()} author ${getAuthorCommit()} was built successful"
 
         def webHook = "https://hooks.slack.com/services/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"
 
