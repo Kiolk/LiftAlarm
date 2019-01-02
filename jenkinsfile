@@ -19,7 +19,7 @@ pipeline{
                }
             }
          stage('Test'){
-         when{ GIT_TAG_NAME == "test-4"
+         when{ tag == "test-*"
          }
                 steps{
                     echo('Testing...')
