@@ -28,7 +28,9 @@ pipeline{
         }
     post {
         always {
-             archiveArtifacts artifacts: 'app/build/outputs/apk/'
+            if(branch == 'master'){
+                 archiveArtifacts artifacts: 'app/build/outputs/apk/'
+                 }
              junit '**/build/test-results/testDebugUnitTest/*.xml'
         }
       //  failure{
