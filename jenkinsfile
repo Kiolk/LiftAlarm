@@ -9,6 +9,8 @@ pipeline{
                 }
             }
          stage('Build'){
+            when{ branch 'develop'
+         }
             steps{
                 echo('Building...')
                 sh './gradlew assembleRelease'
@@ -28,6 +30,9 @@ pipeline{
         always {
              archiveArtifacts artifacts: 'app/build/outputs/apk/'
              junit '**/build/test-results/testDebugUnitTest/*.xml'
+        }
+        failure{
+
         }
     }
 }
