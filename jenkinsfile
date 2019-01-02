@@ -9,7 +9,7 @@ pipeline{
                 }
             }
          stage('Build'){
-            when{ branch 'master'
+            when{ tag "release-*"
          }
             steps{
                 echo('Building...')
@@ -19,6 +19,8 @@ pipeline{
                }
             }
          stage('Test'){
+         when{ tag "test-*"
+         }
                 steps{
                     echo('Testing...')
                     sh './gradlew hello'
