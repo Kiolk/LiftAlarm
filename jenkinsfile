@@ -23,14 +23,15 @@ pipeline{
                     echo('Testing...')
                     sh './gradlew hello'
                     sh './gradlew testDebugUnitTest'
+                    sh './gradlew assembleDebug'
                 }
             }
         }
     post {
         always {
-            if(branch == 'master'){
-                 archiveArtifacts artifacts: 'app/build/outputs/apk/'
-                 }
+           // if(branch == 'master'){
+                archiveArtifacts artifacts: 'app/build/outputs/apk/'
+                 //}
              junit '**/build/test-results/testDebugUnitTest/*.xml'
         }
       //  failure{
