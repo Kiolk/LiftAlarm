@@ -59,7 +59,8 @@ android {
 
 task uploadeToCrashlytics{
     def commit = getCurrentCommit()
-    if(commit.matches("(.*)skip(.*)")){
+
+    if(commit.matches("(.*)bump(.*)")){
         dependsOn("assembleDebug")
         dependsOn('crashlyticsUploadDistributionDebug')
     }else{
