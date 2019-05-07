@@ -6,3 +6,12 @@ ext.getCurrentBranch = { ->
     }
     return stdout.toString().trim()
 }
+
+ext.getCurrentCommit = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec{
+        commandLine 'git', 'log', '-1', '--pretty=%B'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}

@@ -72,6 +72,15 @@ task cleanDefault{
     cleanCompleted.finalizedBy(clean)
 }
 
+//task uploadeToCrashlytics{
+//    def commit = getCurrentCommit()
+//    if(commit.matches("(.*)skip(.*)")){
+//       dependsOn('crashlyticsUploadDistributionDebug')
+//    }else{
+//        println commit
+//    }
+//}
+
 task slackMessage{
 
     doLast{
