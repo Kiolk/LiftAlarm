@@ -15,3 +15,38 @@ ext.getCurrentCommit = { ->
     }
     return stdout.toString().trim()
 }
+
+ext.getGitHash = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'rev-parse', '--short', 'HEAD'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
+
+ext.formReleaseNote = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine  'git', 'log', '--no-merges', '--pretty=%B', '-n', '10', 'HEAD'
+        standardOutput = stdout
+    }
+    def commits = stdout.toString().trim().split("\n")
+    def note = ""
+    def counter = 1
+    for(item in commits){
+        if(counter != 1 && item.matches("(.*)bump(.*)")){
+            break
+        }
+        if(item.trim()){
+            def noteItems = item.split("Releas note:")
+            if(noteItems.length > 1){
+                note += "${counter}. ${noteItems[1].trim()}\n"
+                ++counter
+            }
+        }
+    }
+    println(note)
+    return note
+}
+

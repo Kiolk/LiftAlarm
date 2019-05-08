@@ -57,7 +57,7 @@ task hello{
     description 'Simple Hello World! task'
 
     doLast{
-        println('Hello World!')
+        formReleaseNote()
     }
 }
 
@@ -76,6 +76,17 @@ task cleanDefault{
 //    def commit = getCurrentCommit()
 //    if(commit.matches("(.*)skip(.*)")){
 //       dependsOn('crashlyticsUploadDistributionDebug')
+//    }else{
+//        println commit
+//    }
+//}
+
+//task uploadeToCrashlytics{
+//    def commit = getCurrentCommit()
+//
+//    if(commit.matches("(.*)bump(.*)")){
+//        dependsOn("assembleDebug")
+//        dependsOn('crashlyticsUploadDistributionDebug')
 //    }else{
 //        println commit
 //    }
