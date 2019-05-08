@@ -35,7 +35,7 @@ ext.formReleaseNote = { ->
     def note = ""
     def counter = 1
     for(item in commits){
-        if(counter != 1 && item.matches("(.*)bump(.*)")){
+        if(counter != 1 && item.matches("(.*)[B,b]ump(.*)")){
             break
         }
         if(item.trim()){
