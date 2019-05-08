@@ -40,6 +40,25 @@ android {
         }
     }
 
+    flavorDimensions "version"
+
+    productFlavors {
+        qa {
+            // Assigns this product flavor to the "version" flavor dimension.
+            // This property is optional if you are using only one dimension.
+            dimension "version"
+            applicationIdSuffix ".qa"
+            versionNameSuffix "-qa"
+
+            signingConfig signingConfigs.release
+        }
+        prod {
+            dimension "version"
+            signingConfig signingConfigs.release
+            buildConfigField "String", "API_URL", "\"\""
+        }
+    }
+
     buildTypes {
         release {
             signingConfig signingConfigs.release
@@ -59,7 +78,7 @@ task uploadeToCrashlytics{
 
     if(commit.matches("(.*)[B,b]ump(.*)")){
         dependsOn("assembleDebug")
-        dependsOn('crashlyticsUploadDistributionDebug')
+        dependsOn('crashlyticsUploadDistributionQaRelease')
     }else{
         println commit
     }

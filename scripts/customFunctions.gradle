@@ -39,7 +39,7 @@ ext.formReleaseNote = { ->
             break
         }
         if(item.trim()){
-            def noteItems = item.split("Releas note:")
+            def noteItems = item.split("Release note:")
             if(noteItems.length > 1){
                 note += "${counter}. ${noteItems[1].trim()}\n"
                 ++counter
